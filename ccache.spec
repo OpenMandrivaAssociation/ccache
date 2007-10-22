@@ -1,6 +1,6 @@
 Name:		ccache
 Version:	2.4
-Release:	%mkrel 14
+Release:	%mkrel 15
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPL
