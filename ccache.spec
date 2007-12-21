@@ -6,6 +6,7 @@ Summary:	Compiler Cache
 License:	GPL
 URL:		http://ccache.samba.org/
 Source0:	%{name}-%{version}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
