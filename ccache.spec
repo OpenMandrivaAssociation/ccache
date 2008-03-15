@@ -1,6 +1,6 @@
 Name:		ccache
 Version:	2.4
-Release:	%mkrel 16
+Release:	%mkrel 17
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPL
@@ -83,15 +83,12 @@ echo "%attr(0755,root,root) %{_libdir}/ccache/bin/$1" >> %{name}-%{version}.comp
 }
 
 for name in gcc g++ c++; do
- for comp in $name $pref-$name; do
-  create_compiler $comp
+ for comp in $name $pref-$name ${pref/manbo/mandriva}-$name; do
+  # check for backports that have no manbo:
+  [ -e "%{buildroot}%{_libdir}/ccache/bin/$comp" ] || create_compiler $comp
  done
 done
 create_compiler cc
-%if %{mdkversion} >= 200810
-# manbo-mandriva-files-gcc
-create_compiler ${pref/manbo/mandriva}-gcc
-%endif
 
 %__mkdir_p %{buildroot}%{_sysconfdir}/sysconfig/
 %__cat <<EOF > %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
