@@ -1,6 +1,6 @@
 Name:		ccache
 Version:	2.4
-Release:	%mkrel 15
+Release:	%mkrel 16
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPL
@@ -61,10 +61,14 @@ EOF
 %__install -pm 755 %{name}.sh %{name}.csh %{buildroot}%{_sysconfdir}/profile.d
 rm -f %{name}-%{version}.compilers
 pref=`gcc -dumpmachine`
-for name in cc gcc g++ c++; do
-for comp in $name $pref-$name; do
-%__cat <<EOF > %{buildroot}%{_prefix}/%{_lib}/ccache/bin/$comp
+
+create_compiler() {
+%__cat <<EOF > %{buildroot}%{_prefix}/%{_lib}/ccache/bin/$1
 #!/bin/sh
+if [ ! -x %_bindir/$1 ]; then
+	echo Error: compiler $1 does not exist. >&2
+	exit 127
+fi
 PATH=%_bindir:\$PATH
 if [ -f /etc/sysconfig/ccache ]; then
 	. /etc/sysconfig/ccache
@@ -73,11 +77,21 @@ if [ -f /etc/sysconfig/ccache ]; then
 	fi
 fi
 
-ccache ${comp} "\$@"
+ccache ${1} "\$@"
 EOF
-echo "%attr(0755,root,root) %{_libdir}/ccache/bin/$comp" >> %{name}-%{version}.compilers
+echo "%attr(0755,root,root) %{_libdir}/ccache/bin/$1" >> %{name}-%{version}.compilers
+}
+
+for name in gcc g++ c++; do
+ for comp in $name $pref-$name; do
+  create_compiler $comp
+ done
 done
-done
+create_compiler cc
+%if %{mdkversion} >= 200810
+# manbo-mandriva-files-gcc
+create_compiler ${pref/manbo/mandriva}-gcc
+%endif
 
 %__mkdir_p %{buildroot}%{_sysconfdir}/sysconfig/
 %__cat <<EOF > %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
