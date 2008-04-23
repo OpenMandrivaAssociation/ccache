@@ -1,6 +1,6 @@
 Name:		ccache
 Version:	2.4
-Release:	%mkrel 17
+Release:	%mkrel 18
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPL
@@ -55,7 +55,7 @@ EOF
 %install
 %__rm -rf %{buildroot}
 %__install -dm 755 %{buildroot}{%{_bindir},%{_libdir}/ccache/bin,%{_mandir}/man1}
-%__install -pm 755 ccache %{buildroot}%{_libdir}/ccache/bin
+%__install -pm 755 ccache %{buildroot}%{_bindir}
 %__install -pm 644 ccache.1 %{buildroot}%{_mandir}/man1
 %__install -dm 755 %{buildroot}%{_sysconfdir}/profile.d
 %__install -pm 755 %{name}.sh %{name}.csh %{buildroot}%{_sysconfdir}/profile.d
@@ -113,7 +113,7 @@ rm -rf %{buildroot}
 %doc README
 %dir %{_libdir}/ccache
 %dir %{_libdir}/ccache/bin
-%{_libdir}/ccache/bin/ccache
+%{_bindir}/ccache
 %{_mandir}/man1/ccache.1*
 %{_sysconfdir}/profile.d/*
 %config(noreplace) %{_sysconfdir}/sysconfig/*
