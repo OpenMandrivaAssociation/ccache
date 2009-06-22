@@ -27,7 +27,6 @@ the start of your \$PATH
 %make
 
 %__cat <<EOF > %{name}.sh
-#!/bin/sh
 
 if [ -f /etc/sysconfig/ccache ]; then
     . /etc/sysconfig/ccache
@@ -40,7 +39,6 @@ fi
 EOF
 
 %__cat << EOF > %{name}.csh
-#!/bin/csh
 
 if ( -f /etc/sysconfig/ccache ) then
     eval \`sed -n 's/^\([^#]*\)=\([^#]*\)/set \1=\2;/p' < /etc/sysconfig/ccache\`
