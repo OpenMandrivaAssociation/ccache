@@ -1,11 +1,11 @@
 Name:		ccache
-Version:	3.0.1
+Version:	3.1
 Release:	%mkrel 1
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPLv3+
 URL:		http://ccache.samba.org/
-Source0:	http://samba.org/ftp/ccache/%{name}-%{version}.tar.bz2
+Source0:	http://samba.org/ftp/ccache/%{name}-%{version}.tar.xz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
