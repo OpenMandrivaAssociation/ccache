@@ -1,6 +1,6 @@
 Name:		ccache
 Version:	3.1.5
-Release:	%mkrel 1
+Release:	2
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPLv3+
@@ -55,8 +55,9 @@ EOF
 %__install -dm 755 %{buildroot}{%{_bindir},%{_libdir}/ccache/bin,%{_mandir}/man1}
 %__install -pm 755 ccache %{buildroot}%{_bindir}
 %__install -pm 644 ccache.1 %{buildroot}%{_mandir}/man1
-%__install -dm 755 %{buildroot}%{_sysconfdir}/profile.d
-%__install -pm 755 %{name}.sh %{name}.csh %{buildroot}%{_sysconfdir}/profile.d
+%__install -pm 755 %{name}.sh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.sh
+%__install -pm 755 %{name}.csh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.csh
+
 rm -f %{name}-%{version}.compilers
 pref=`gcc -dumpmachine`
 
