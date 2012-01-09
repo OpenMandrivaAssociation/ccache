@@ -1,12 +1,11 @@
 Name:		ccache
-Version:	3.1.5
-Release:	2
+Version:	3.1.7
+Release:	1
 Group:		Development/Other
 Summary:	Compiler Cache
 License:	GPLv3+
 URL:		http://ccache.samba.org/
 Source0:	http://samba.org/ftp/ccache/%{name}-%{version}.tar.xz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
@@ -104,11 +103,7 @@ USE_CCACHE_WITH_ICECREAM="no"
 
 EOF
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}-%{version}.compilers
-%defattr(-,root,root)
 %dir %{_libdir}/ccache
 %dir %{_libdir}/ccache/bin
 %{_bindir}/ccache
