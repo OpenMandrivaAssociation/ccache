@@ -1,10 +1,10 @@
+Summary:	Compiler Cache
 Name:		ccache
 Version:	3.1.7
 Release:	1
 Group:		Development/Other
-Summary:	Compiler Cache
 License:	GPLv3+
-URL:		http://ccache.samba.org/
+Url:		http://ccache.samba.org/
 Source0:	http://samba.org/ftp/ccache/%{name}-%{version}.tar.xz
 
 %description
@@ -25,7 +25,7 @@ the start of your \$PATH
 %configure2_5x
 %make
 
-%__cat <<EOF > %{name}.sh
+cat <<EOF > %{name}.sh
 
 if [ -f /etc/sysconfig/ccache ]; then
     . /etc/sysconfig/ccache
@@ -37,7 +37,7 @@ if [ "\$USE_CCACHE_DEFAULT" = "yes" ]; then
 fi
 EOF
 
-%__cat << EOF > %{name}.csh
+cat << EOF > %{name}.csh
 
 if ( -f /etc/sysconfig/ccache ) then
     eval \`sed -n 's/^\([^#]*\)=\([^#]*\)/set \1=\2;/p' < /etc/sysconfig/ccache\`
@@ -50,18 +50,17 @@ endif
 EOF
 
 %install
-%__rm -rf %{buildroot}
-%__install -dm 755 %{buildroot}{%{_bindir},%{_libdir}/ccache/bin,%{_mandir}/man1}
-%__install -pm 755 ccache %{buildroot}%{_bindir}
-%__install -pm 644 ccache.1 %{buildroot}%{_mandir}/man1
-%__install -pm 755 %{name}.sh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.sh
-%__install -pm 755 %{name}.csh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.csh
+install -dm 755 %{buildroot}{%{_bindir},%{_libdir}/ccache/bin,%{_mandir}/man1}
+install -pm 755 ccache %{buildroot}%{_bindir}
+install -pm 644 ccache.1 %{buildroot}%{_mandir}/man1
+install -pm 755 %{name}.sh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.sh
+install -pm 755 %{name}.csh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.csh
 
 rm -f %{name}-%{version}.compilers
 pref=`gcc -dumpmachine`
 
 create_compiler() {
-%__cat <<EOF > %{buildroot}%{_prefix}/%{_lib}/ccache/bin/$1
+cat <<EOF > %{buildroot}%{_prefix}/%{_lib}/ccache/bin/$1
 #!/bin/sh
 if [ ! -x %_bindir/$1 ]; then
 	echo Error: compiler $1 does not exist. >&2
@@ -88,8 +87,8 @@ for name in gcc g++ c++; do
 done
 create_compiler cc
 
-%__mkdir_p %{buildroot}%{_sysconfdir}/sysconfig/
-%__cat <<EOF > %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
+mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/
+cat <<EOF > %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
 # Should we add the ccache compiler symlinks to PATH
 # yes|no
 # Please note that if added to \$PATH the user can still disable 
@@ -110,65 +109,4 @@ EOF
 %{_mandir}/man1/ccache.1*
 %{_sysconfdir}/profile.d/*
 %config(noreplace) %{_sysconfdir}/sysconfig/*
-
-
-
-
-
-%changelog
-* Mon Jan 09 2012 Alexander Khrukin <akhrukin@mandriva.org> 3.1.7-1
-+ Revision: 759181
-- version update 3.1.7
-
-* Sat Dec 03 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 3.1.5-2
-+ Revision: 737400
-- fix so that ccache gets added to $PATH earlier, so that other wrappers can be
-  added with higher priority to $PATH later (ie. work with colorgcc)
-
-* Sun May 29 2011 Funda Wang <fwang@mandriva.org> 3.1.5-1
-+ Revision: 681745
-- update to new version 3.1.5
-
-* Wed Sep 22 2010 Funda Wang <fwang@mandriva.org> 3.1-1mdv2011.0
-+ Revision: 580563
-- new version 3.1
-
-* Mon Aug 23 2010 Funda Wang <fwang@mandriva.org> 3.0.1-1mdv2011.0
-+ Revision: 572118
-- new version 3.0.1
-
-* Mon Jun 22 2009 Wanderlei Cavassin <cavassin@mandriva.com.br> 2.4-20mdv2011.0
-+ Revision: 388082
-+ rebuild (emptylog)
-
-* Mon Jun 22 2009 Wanderlei Cavassin <cavassin@mandriva.com.br> 2.4-19mdv2010.0
-+ Revision: 388073
-- remove shell bang to avoid uneeded dependencies (fixes mdv #51777)
-
-* Thu Aug 07 2008 Thierry Vignaud <tv@mandriva.org> 2.4-19mdv2009.0
-+ Revision: 266473
-- rebuild early 2009.0 package (before pixel changes)
-
-* Wed Apr 23 2008 Helio Chissini de Castro <helio@mandriva.com> 2.4-18mdv2009.0
-+ Revision: 196994
-- Moving ccache binary to bin to allow make install as root works
-
-* Sat Mar 15 2008 Anssi Hannula <anssi@mandriva.org> 2.4-17mdv2008.1
-+ Revision: 188046
-- add mandriva variants of manbo g++ and c++
-
-* Sat Mar 15 2008 Anssi Hannula <anssi@mandriva.org> 2.4-16mdv2008.1
-+ Revision: 188036
-- update compiler scripts to match current manbo-adapted compilers
-- check the compiler existence before continuing to avoid fork bombs
-
-  + Olivier Blin <blino@mandriva.org>
-    - restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-* Mon Oct 22 2007 Marcelo Ricardo Leitner <mrl@mandriva.com> 2.4-15mdv2008.1
-+ Revision: 101148
-- Rebuild
 
