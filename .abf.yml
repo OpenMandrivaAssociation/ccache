@@ -1,4 +1,2 @@
-removed_sources:
-  ccache-3.1.7.tar.xz: 5e62e75b9834a90d9a03f0e6d87b7b74de510479
 sources:
-  ccache-3.1.9.tar.xz: 1002d869cc87d1fc2f05b5d623abb41f342f577e
+  ccache-3.3.4.tar.xz: e1df3902782d9dcb6a7c34cf917a2cb8112c6fab

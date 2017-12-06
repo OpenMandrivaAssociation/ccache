@@ -1,12 +1,11 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	3.1.9
-Release:	7
+Version:	3.3.4
+Release:	1
 Group:		Development/Other
 License:	GPLv3+
 Url:		http://ccache.samba.org/
 Source0:	http://samba.org/ftp/ccache/%{name}-%{version}.tar.xz
-Patch0:		ccache-3.1.9-gcc48-tests.patch
 
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
@@ -21,10 +20,10 @@ the start of your \$PATH
 
 %prep
 %setup -q
-%patch0 -p1 -b .gcc48~
+%apply_patches
 
 %build
-%configure2_5x
+%configure
 %make
 
 cat <<EOF > %{name}.sh
