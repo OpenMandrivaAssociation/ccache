@@ -1,6 +1,6 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	3.3.4
+Version:	3.6
 Release:	1
 Group:		Development/Other
 License:	GPLv3+
@@ -20,11 +20,10 @@ the start of your \$PATH
 
 %prep
 %setup -q
-%apply_patches
 
 %build
 %configure
-%make
+%make_build
 
 cat <<EOF > %{name}.sh
 
