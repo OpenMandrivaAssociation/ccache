@@ -52,7 +52,7 @@ EOF
 %install
 install -dm 755 %{buildroot}{%{_bindir},%{_libdir}/ccache/bin,%{_mandir}/man1}
 install -pm 755 ccache %{buildroot}%{_bindir}
-install -pm 644 ccache.1 %{buildroot}%{_mandir}/man1
+install -pm 644 doc/ccache.1 %{buildroot}%{_mandir}/man1
 install -pm 755 %{name}.sh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.sh
 install -pm 755 %{name}.csh -D %{buildroot}%{_sysconfdir}/profile.d/30ccache.csh
 
