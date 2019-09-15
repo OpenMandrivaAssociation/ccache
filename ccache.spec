@@ -1,11 +1,11 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	3.7.1
+Version:	3.7.4
 Release:	1
 Group:		Development/Other
 License:	GPLv3+
 Url:		http://ccache.samba.org/
-Source0:	http://samba.org/ftp/ccache/%{name}-%{version}.tar.xz
+Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
