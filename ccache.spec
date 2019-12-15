@@ -1,7 +1,7 @@
 Summary:	Compiler Cache
 Name:		ccache
 Version:	3.7.6
-Release:	1
+Release:	2
 Group:		Development/Other
 License:	GPLv3+
 Url:		http://ccache.samba.org/
@@ -19,7 +19,7 @@ enabled and you wish to use it, simply add %{_prefix}/%{_lib}/ccache/bin/ to
 the start of your \$PATH
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -103,7 +103,7 @@ USE_CCACHE_WITH_ICECREAM="no"
 EOF
 
 %check
-%make check
+%make_build check
 
 %files -f %{name}-%{version}.compilers
 %dir %{_libdir}/ccache
