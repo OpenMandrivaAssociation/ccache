@@ -8,6 +8,7 @@ Url:		http://ccache.samba.org/
 Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires: cmake
+BuildRequires: pkgconfig(libzstd)
 
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
