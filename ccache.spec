@@ -7,6 +7,8 @@ License:	GPLv3+
 Url:		http://ccache.samba.org/
 Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
+BuildRequires: cmake
+
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
 C/C++ compilers, using the -E compiler switch and a hash to detect 
@@ -22,7 +24,7 @@ the start of your \$PATH
 %autosetup -p1
 
 %build
-%configure
+%cmake
 %make_build
 
 cat <<EOF > %{name}.sh
