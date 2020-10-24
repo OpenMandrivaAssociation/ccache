@@ -30,7 +30,7 @@ the start of your \$PATH
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DENABLE_TESTING=$TEST \
-        -DZSTD_LIBRARY=/usr/lib/libzstd.a
+        -DZSTD_LIBRARY=/usr/%{_lib}/libzstd.a
 %ninja_build
 
 cat <<EOF > %{name}.sh
