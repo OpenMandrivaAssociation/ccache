@@ -26,7 +26,11 @@ the start of your \$PATH
 %autosetup -p1
 
 %build
-%cmake -G Ninja
+%cmake \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_TESTING=$TEST \
+        -DZSTD_LIBRARY=/usr/lib/libzstd.a
 %ninja_build
 
 cat <<EOF > %{name}.sh
