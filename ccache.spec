@@ -56,7 +56,7 @@ EOF
 %install
 %ninja_install -C build
 
-%files -f %{name}-%{version}.compilers
+%files
 %dir %{_libdir}/ccache
 %dir %{_libdir}/ccache/bin
 %{_bindir}/ccache
