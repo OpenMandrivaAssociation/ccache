@@ -8,6 +8,7 @@ Url:		http://ccache.samba.org/
 Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires: cmake
+BuildRequires: ninja
 BuildRequires: pkgconfig(libzstd)
 
 %description
@@ -25,8 +26,8 @@ the start of your \$PATH
 %autosetup -p1
 
 %build
-%cmake
-%make_build
+%cmake -G Ninja
+%ninja_build
 
 cat <<EOF > %{name}.sh
 
@@ -53,7 +54,7 @@ endif
 EOF
 
 %install
-%make_install - C build
+%ninja_install -C build
 #install -dm 755 %{buildroot}{%{_bindir},%{_libdir}/ccache/bin,%{_mandir}/man1}
 #install -pm 755 ccache %{buildroot}%{_bindir}
 #install -pm 644 doc/ccache.1 %{buildroot}%{_mandir}/man1
