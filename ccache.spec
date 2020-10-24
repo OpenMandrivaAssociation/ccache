@@ -10,6 +10,7 @@ Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-
 BuildRequires: cmake
 BuildRequires: ninja
 BuildRequires: pkgconfig(libzstd)
+BuildRequires: %{_lib}zstd-static-devel
 
 %description
 ccache is a compiler cache. It acts as a caching pre-processor to 
