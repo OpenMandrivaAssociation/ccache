@@ -57,10 +57,10 @@ EOF
 %ninja_install -C build
 
 %files
-%dir %{_libdir}/ccache
-%dir %{_libdir}/ccache/bin
+#dir #{_libdir}/ccache
+#dir #{_libdir}/ccache/bin
 %{_bindir}/ccache
-%{_mandir}/man1/ccache.1*
-%{_sysconfdir}/profile.d/*
-%config(noreplace) %{_sysconfdir}/sysconfig/*
+#{_mandir}/man1/ccache.1*
+#{_sysconfdir}/profile.d/*
+#config(noreplace) #{_sysconfdir}/sysconfig/*
 
