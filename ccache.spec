@@ -8,6 +8,7 @@ Url:		http://ccache.samba.org/
 Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires: asciidoc
+BuildRequires: a2x
 BuildRequires: cmake
 BuildRequires: ninja
 BuildRequires: pkgconfig(libzstd)
