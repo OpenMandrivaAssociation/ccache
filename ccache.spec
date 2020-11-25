@@ -67,7 +67,7 @@ EOF
 #dir #{_libdir}/ccache
 #dir #{_libdir}/ccache/bin
 %{_bindir}/ccache
-%{_mandri}/man1/ccache.1.*
+%{_mandir}/man1/ccache.1.*
 #{_sysconfdir}/profile.d/*
 #config(noreplace) #{_sysconfdir}/sysconfig/*
 
