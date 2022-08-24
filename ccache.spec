@@ -1,6 +1,6 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	4.6.1
+Version:	4.6.2
 Release:	1
 Group:		Development/Other
 License:	GPLv3+
@@ -65,10 +65,5 @@ EOF
 %ninja_install -C build
 
 %files
-#dir #{_libdir}/ccache
-#dir #{_libdir}/ccache/bin
 %{_bindir}/ccache
-#{_mandir}/man1/ccache.1.*
-#{_sysconfdir}/profile.d/*
-#config(noreplace) #{_sysconfdir}/sysconfig/*
 
