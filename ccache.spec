@@ -1,10 +1,10 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	4.9.1
+Version:	4.10
 Release:	1
 Group:		Development/Other
 License:	GPLv3+
-Url:		http://ccache.samba.org/
+Url:		https://ccache.samba.org/
 Source0:	https://github.com/ccache/ccache/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires: asciidoc
