@@ -12,6 +12,7 @@ BuildRequires: a2x
 BuildRequires: cmake
 BuildRequires: ninja
 BuildRequires: cmake(fmt)
+BuildRequires: pkgconfig(libxxhash)
 BuildRequires: pkgconfig(hiredis)
 BuildRequires: pkgconfig(libzstd)
 BuildRequires: %{_lib}zstd-static-devel
