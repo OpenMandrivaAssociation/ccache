@@ -1,7 +1,7 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	4.10.2
-Release:	2
+Version:	4.11.1
+Release:	1
 Group:		Development/Other
 License:	GPLv3+
 Url:		https://ccache.samba.org/
