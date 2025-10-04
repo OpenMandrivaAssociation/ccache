@@ -1,6 +1,6 @@
 Summary:	Compiler Cache
 Name:		ccache
-Version:	4.11.3
+Version:	4.12.1
 Release:	1
 Group:		Development/Other
 License:	GPLv3+
